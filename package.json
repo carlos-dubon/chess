@@ -1,0 +1,17 @@
+{
+  "name": "chess",
+  "version": "1.0.0",
+  "description": "a chess game",
+  "main": "chess.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "carlos dubón",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0"
+  }
+}
