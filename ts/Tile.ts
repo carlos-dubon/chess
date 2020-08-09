@@ -4,10 +4,12 @@ export default class Tile {
   x: number;
   y: number;
   tile: object;
+  piece: string;
   constructor(i: number, j: number, currentTile: object) {
     this.x = i;
     this.y = j;
     this.tile = currentTile;
+    this.piece = "none";
   }
 
   getDOMElement() {

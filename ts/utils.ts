@@ -11,10 +11,10 @@ export function getTileDataSetPosition(tileData: object) {
   return keys[2];
 }
 
-export function getTilePosition(tile: any) {
+export function getTilePosition(tile: any): Array<number> {
   let currentTile = tile.dataset;
-  let keys = Object.values(currentTile);
-  let x = keys[0];
-  let y = keys[1];
+  let keys: any = Object.values(currentTile);
+  let x: number = keys[0];
+  let y: number = keys[1];
   return [x, y];
 }

@@ -4,6 +4,7 @@ export default class Tile {
         this.x = i;
         this.y = j;
         this.tile = currentTile;
+        this.piece = "none";
     }
     getDOMElement() {
         let position = UTILS.getTileDataSetPosition(this.tile);
