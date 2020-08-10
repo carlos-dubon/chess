@@ -1,14 +1,9 @@
-export function create2DArray(rows: number, cols: number) {
+export function create2DArray(rows: number, cols: number): Array<Array<any>> {
   let arr = new Array(rows);
   for (let i = 0; i < arr.length; i++) {
     arr[i] = new Array(cols);
   }
   return arr;
-}
-
-export function getTileDataSetPosition(tileData: object) {
-  let keys = Object.values(tileData);
-  return keys[2];
 }
 
 export function getTilePosition(tile: any): Array<number> {

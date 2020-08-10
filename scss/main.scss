@@ -21,10 +21,12 @@ body {
   flex-wrap: wrap;
   min-width: $boardSize;
   min-height: $boardSize;
-  border: 2px solid $boardBorder;
+  border: 3px solid $boardBorder;
   background-color: #ffffff;
   max-width: $boardSize;
   user-select: none;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .board .row {
@@ -38,12 +40,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.2em;
+  font-size: 3.3em;
   width: 100%;
   max-width: $tileSize;
   height: $tileSize;
   cursor: pointer;
-  color: black;
+  color: rgb(0, 0, 0);
+  transition: 0.1s;
+  box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
 .board .light {
@@ -66,7 +70,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(115, 255, 0);
+  background: rgba(115, 255, 0, 0.8);
   opacity: 0.6;
   z-index: -1;
 }

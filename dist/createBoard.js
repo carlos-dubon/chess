@@ -5,6 +5,7 @@ const boardArray = UTILS.create2DArray(CONSTANTS.boardRows, CONSTANTS.boardCols)
 let mousePressed = 0;
 let initialPosition;
 let finalPosition;
+let piece;
 export function createBoard(rows, cols, board) {
     for (let i = 0; i < rows; i++) {
         let row = document.createElement("div");
@@ -15,8 +16,7 @@ export function createBoard(rows, cols, board) {
             col.setAttribute("data-row", `${i}`);
             col.setAttribute("data-col", `${j}`);
             col.setAttribute("data-position", `${i}${j}`);
-            let currentTile = col.dataset;
-            boardArray[i][j] = new Tile(i, j, currentTile);
+            boardArray[i][j] = new Tile(i, j, col);
             if (i == 0 && (j == 0 || j == 7)) {
                 col.innerHTML = CONSTANTS.bR;
                 boardArray[i][j].piece = "bR";
@@ -66,19 +66,27 @@ export function createBoard(rows, cols, board) {
                 boardArray[i][j].piece = "wP";
             }
             col.addEventListener("click", function () {
-                console.log(boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]]);
                 mousePressed++;
                 if (mousePressed == 2) {
                     mousePressed = 0;
                 }
-                if (mousePressed == 1) {
+                let currentTile;
+                if (mousePressed == 1 && this.innerHTML != "") {
                     initialPosition = this;
+                    piece = this.innerHTML;
+                    currentTile =
+                        boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]];
+                    currentTile.piece = "none";
                 }
-                else if (mousePressed == 0) {
+                if (mousePressed == 0) {
                     finalPosition = this;
                     let move = initialPosition.innerHTML;
                     finalPosition.innerHTML = move;
-                    initialPosition.innerHTML = '';
+                    initialPosition.innerHTML = "";
+                    currentTile =
+                        boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]];
+                    currentTile.piece = piece;
+                    console.log(boardArray);
                 }
             });
             row.appendChild(col);
@@ -89,6 +97,6 @@ export function createBoard(rows, cols, board) {
                 col.classList.add("dark");
             }
         }
-        board.append(row);
+        board?.append(row);
     }
 }

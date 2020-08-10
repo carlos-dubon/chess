@@ -1,14 +1,11 @@
-import * as UTILS from "./utils.js";
 export default class Tile {
-    constructor(i, j, currentTile) {
+    constructor(i, j, tile) {
         this.x = i;
         this.y = j;
-        this.tile = currentTile;
-        this.piece = "none";
+        this.tile = tile;
+        this.piece = 'none';
     }
-    getDOMElement() {
-        let position = UTILS.getTileDataSetPosition(this.tile);
-        let element = document.querySelectorAll(`[data-position="${position}"]`)[0];
-        return element;
+    getElement() {
+        return this.tile;
     }
 }

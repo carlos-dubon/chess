@@ -5,10 +5,6 @@ export function create2DArray(rows, cols) {
     }
     return arr;
 }
-export function getTileDataSetPosition(tileData) {
-    let keys = Object.values(tileData);
-    return keys[2];
-}
 export function getTilePosition(tile) {
     let currentTile = tile.dataset;
     let keys = Object.values(currentTile);
