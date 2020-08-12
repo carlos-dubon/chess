@@ -1,0 +1,36 @@
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 530px;
+  height: 530px;
+  .row-1,
+  .row-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 100%;
+    background-color: #aa530e;
+    .col-empty {
+        width: 25px;
+    }
+    .x-label {
+        width: 52px;
+    }
+  }
+  .row-2 {
+    display: flex;
+    flex-direction: row;
+    .col-1,
+    .col-3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 100%;
+      background-color: #aa530e;
+    }
+  }
+}

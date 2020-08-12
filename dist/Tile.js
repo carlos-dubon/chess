@@ -3,9 +3,6 @@ export default class Tile {
         this.x = i;
         this.y = j;
         this.tile = tile;
-        this.piece = 'none';
-    }
-    getElement() {
-        return this.tile;
+        this.piece = "none";
     }
 }

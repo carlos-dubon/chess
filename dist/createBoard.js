@@ -78,16 +78,16 @@ export function createBoard(rows, cols, board) {
                         boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]];
                     currentTile.piece = "none";
                 }
-                if (mousePressed == 0) {
+                if (mousePressed == 0 && initialPosition.innerHTML != "") {
                     finalPosition = this;
                     let move = initialPosition.innerHTML;
-                    finalPosition.innerHTML = move;
                     initialPosition.innerHTML = "";
+                    finalPosition.innerHTML = move;
                     currentTile =
                         boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]];
                     currentTile.piece = piece;
-                    console.log(boardArray);
                 }
+                console.log(boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]]);
             });
             row.appendChild(col);
             if ((i + j) % 2 == 0) {

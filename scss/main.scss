@@ -1,5 +1,7 @@
-@import "constants";
 @import "chessfont";
+@import "constants";
+@import "container";
+
 
 * {
   box-sizing: border-box;
@@ -12,6 +14,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $appBackground;
 }
 
 .board {
@@ -21,12 +24,11 @@ body {
   flex-wrap: wrap;
   min-width: $boardSize;
   min-height: $boardSize;
-  border: 3px solid $boardBorder;
+  //border: 3px solid $boardBorder;
   background-color: #ffffff;
   max-width: $boardSize;
   user-select: none;
   overflow: hidden;
-  border-radius: 4px;
 }
 
 .board .row {
@@ -45,9 +47,7 @@ body {
   max-width: $tileSize;
   height: $tileSize;
   cursor: pointer;
-  color: rgb(0, 0, 0);
-  transition: 0.1s;
-  box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+  color: $pieceColor;
 }
 
 .board .light {
@@ -70,7 +70,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(115, 255, 0, 0.8);
+  background: $activeColor;
   opacity: 0.6;
   z-index: -1;
 }

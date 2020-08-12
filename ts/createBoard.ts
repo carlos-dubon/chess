@@ -80,7 +80,6 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
           mousePressed = 0;
         }
 
-        
         let currentTile: Tile;
 
         if (mousePressed == 1 && this.innerHTML != "") {
@@ -93,18 +92,20 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
           currentTile.piece = "none";
         }
 
-        if (mousePressed == 0) {
+        if (mousePressed == 0 && initialPosition.innerHTML != "") {
           finalPosition = this;
           let move = initialPosition.innerHTML;
-          finalPosition.innerHTML = move;
           initialPosition.innerHTML = "";
+          finalPosition.innerHTML = move;
           currentTile =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
           currentTile.piece = piece;
-          console.log(boardArray)
         }
+        console.log(
+          boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]]
+        )
       });
 
       row.appendChild(col);

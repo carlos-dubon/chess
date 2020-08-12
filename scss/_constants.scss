@@ -1,6 +1,9 @@
-$boardSize : 480px;
+$boardSize: 480px;
 $tileSize: 60px;
 $boardTileSize: calc($boardSize/8);
-$boardBorder: #404040;
-$lightTile: #f0d9b5;
-$darkTile: #b58863;
+$pieceColor: #773b0a;
+$boardBorder: #f4f4f4;
+$lightTile: #f3eded;
+$darkTile: #f5c16c;
+$appBackground: #ffaa55;
+$activeColor: rgba(170, 83, 14, 0.8);
