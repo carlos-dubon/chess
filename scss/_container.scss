@@ -7,6 +7,9 @@
   height: 530px;
   .row-1,
   .row-3 {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,10 +17,15 @@
     width: 100%;
     background-color: #aa530e;
     .col-empty {
-        width: 25px;
+      width: 25px;
     }
     .x-label {
-        width: 52px;
+      width: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      cursor: default;
     }
   }
   .row-2 {
@@ -28,9 +36,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       width: 25px;
       height: 100%;
       background-color: #aa530e;
+      .y-label {
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        width: 100%;
+        user-select: none;
+        cursor: default;
+      }
     }
   }
 }
