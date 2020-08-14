@@ -1,5 +1,6 @@
-var path = require("path");
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
@@ -17,17 +18,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: "style-loader",
-          },
-          {
-            loader: "css-loader",
-          },
-          {
-            loader: "sass-loader",
-          },
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         exclude: /node_modules/,
       },
       {
@@ -58,6 +49,7 @@ module.exports = {
               outputPath: "./webfonts",
               publicPath: "./webfonts",
               name: "./[name].[ext]",
+              limit: 8192,
             },
           },
         ],
@@ -73,5 +65,6 @@ module.exports = {
       template: "./src/index.html",
       favicon: "./src/images/favicon.png",
     }),
+    new MiniCssExtractPlugin({ filename: "[name].css" }),
   ],
 };
