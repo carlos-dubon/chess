@@ -1,17 +1,41 @@
 {
   "name": "chess",
   "version": "1.0.0",
-  "description": "a chess game",
-  "main": "chess.js",
+  "description": "A chess game",
+  "main": "index.js",
   "scripts": {
+    "serve": "webpack-dev-server",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-dubon/chess.git"
   },
   "author": "carlos dubón",
   "license": "ISC",
-  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/carlos-dubon/chess/issues"
+  },
+  "homepage": "https://github.com/carlos-dubon/chess/blob/master/README.md",
+  "dependencies": {
+    "css-loader": "^4.2.1",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.3",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.8.0",
-    "@typescript-eslint/parser": "^3.8.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "eslint": "^7.6.0"
   }
 }

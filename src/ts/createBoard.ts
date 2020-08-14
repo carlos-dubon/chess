@@ -1,6 +1,6 @@
-import * as CONSTANTS from "./constants.js";
-import * as UTILS from "./utils.js";
-import Tile from "./Tile.js";
+import * as CONSTANTS from "./constants";
+import * as UTILS from "./utils";
+import Tile from "./Tile";
 
 const boardArray = UTILS.create2DArray(
   CONSTANTS.boardRows,

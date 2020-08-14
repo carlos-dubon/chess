@@ -1,5 +1,3 @@
-import * as UTILS from "./utils.js";
-
 export default class Tile {
   x: number;
   y: number;
