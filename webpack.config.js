@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: "./src/ts/index.ts",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "build"),
+  },
   module: {
     rules: [
       {
@@ -24,13 +28,15 @@ module.exports = {
             loader: "sass-loader",
           },
         ],
+        exclude: /node_modules/,
       },
       {
         test: /\.html$/,
         use: ["html-loader"],
+        exclude: /node_modules/,
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpe?g|gif)$/,
         use: [
           {
             loader: "file-loader",
@@ -41,28 +47,31 @@ module.exports = {
             },
           },
         ],
+        exclude: /node_modules/,
       },
       {
-        test: /\.(woff|woff2|eot|ttf|svg)$/,
-        loader: "url-loader",
-        options: {
-          outputPath: "./webfonts",
-          publicPath: "./webfonts",
-          name: "./[name].[ext]",
-        },
+        test: /\.(woff|woff2|eot|ttf)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              outputPath: "./webfonts",
+              publicPath: "./webfonts",
+              name: "./[name].[ext]",
+            },
+          },
+        ],
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "build"),
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      favicon: "./src/images/favicon.png",
     }),
   ],
 };
