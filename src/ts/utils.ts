@@ -13,3 +13,7 @@ export function getTilePosition(tile: any): Array<number> {
   let y: number = keys[1];
   return [x, y];
 }
+
+export function getMovementDirection(){
+
+}

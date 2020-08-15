@@ -103,9 +103,6 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             ];
           currentTile.piece = piece;
         }
-        console.log(
-          boardArray[UTILS.getTilePosition(this)[0]][UTILS.getTilePosition(this)[1]]
-        )
       });
 
       row.appendChild(col);
