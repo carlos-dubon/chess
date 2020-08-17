@@ -91,9 +91,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
         if (clickCounter == 1) {
           //Initial position
-
           if (
-            //If the startPosition is not empty do this
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ].piece != "none"
@@ -102,14 +100,14 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               boardArray[UTILS.getTilePosition(this)[0]][
                 UTILS.getTilePosition(this)[1]
               ];
-          } else {
-            //Final position
-            endPosition =
-              boardArray[UTILS.getTilePosition(this)[0]][
-                UTILS.getTilePosition(this)[1]
-              ];
-            validation(startPosition, endPosition);
           }
+        } else {
+          //Final position
+          endPosition =
+            boardArray[UTILS.getTilePosition(this)[0]][
+              UTILS.getTilePosition(this)[1]
+            ];
+          validation(startPosition, endPosition);
         }
       });
 

@@ -21,6 +21,7 @@ export default function validate(start: Tile, end: Tile) {
           getVectorComponents(start, end)[1] == 0
         ) {
           //This is an available move for the pawn
+          console.log("Hello")
         }
       } else {
         //The pawn only has 1 upward move available
