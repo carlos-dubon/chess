@@ -24,7 +24,7 @@ export default function validate(start: Tile, end: Tile) {
         }
       } else {
         //The pawn only has 1 upward move available
-        if(getVectorComponents(start, end)[0] <=1 && getVectorComponents(start, end)[1]==0{
+        if(getVectorComponents(start, end)[0] <=1 && getVectorComponents(start, end)[1]==0){
           //This is an available move for the pawn
         }
       }
