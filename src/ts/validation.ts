@@ -8,7 +8,7 @@ interface Tile {
 }
 
 export default function validate(start: Tile, end: Tile) {
-  if (start.piece == CONSTANTS.wP) {
-    console.log("White Pawn selected");
-  }
+    if(start.piece == CONSTANTS.wP || CONSTANTS.bP){ //A pawn was selected
+
+    }
 }

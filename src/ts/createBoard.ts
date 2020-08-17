@@ -29,7 +29,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       }
       if (i == 0 && (j == 1 || j == 6)) {
         col.innerHTML = CONSTANTS.bH;
-        boardArray[i][j].piece = "j"; //Black horse
+        boardArray[i][j].piece = "j"; //Black knight
       }
       if (i == 0 && (j == 2 || j == 5)) {
         col.innerHTML = CONSTANTS.bB;
@@ -54,7 +54,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       }
       if (i == 7 && (j == 1 || j == 6)) {
         col.innerHTML = CONSTANTS.wH;
-        boardArray[i][j].piece = "h"; //White horse
+        boardArray[i][j].piece = "h"; //White knight
       }
       if (i == 7 && (j == 2 || j == 5)) {
         col.innerHTML = CONSTANTS.wB;
