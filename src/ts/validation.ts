@@ -12,7 +12,9 @@ export interface Tile {
 export default function validate(start: Tile, end: Tile) {
   if (start.piece == CONSTANTS.wP || start.piece == CONSTANTS.bP) {
     if (end.piece == "none") {
-      console.log(getVectorComponents(start, end)[0]);
+      if (start.x == 6 || start.x == 1) {
+        //Check if the pawn hasn't moved, if not it has 2 available moves
+      }
     }
   } else if (start.piece == CONSTANTS.wR || start.piece == CONSTANTS.bR) {
     //A rook was selected

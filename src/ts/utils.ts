@@ -18,4 +18,6 @@ export function getTilePosition(tile: HTMLElement): Array<number> {
 
 export function getVectorComponents(start: Tile, end: Tile) {
   return [Math.abs(start.x - end.x), Math.abs(start.y - end.y)];
+  //getVectorComponents(params)[0] returns the movement in the y axis
+  //getVectorComponents(params)[1] returns the movement in the x axis
 }
