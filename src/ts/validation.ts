@@ -1,6 +1,7 @@
 import * as CONSTANTS from "./constants";
+import { getVectorComponents } from "./utils";
 
-interface Tile {
+export interface Tile {
   x: number;
   y: number;
   tile: Element;
@@ -10,7 +11,9 @@ interface Tile {
 
 export default function validate(start: Tile, end: Tile) {
   if (start.piece == CONSTANTS.wP || start.piece == CONSTANTS.bP) {
-    //A pawn was selected
+    if (end.piece == "none") {
+      console.log(getVectorComponents(start, end)[0]);
+    }
   } else if (start.piece == CONSTANTS.wR || start.piece == CONSTANTS.bR) {
     //A rook was selected
   } else if (start.piece == CONSTANTS.wH || start.piece == CONSTANTS.bH) {
