@@ -21,7 +21,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       col.classList.add("col");
       col.setAttribute("data-row", `${i}`);
       col.setAttribute("data-col", `${j}`);
-      boardArray[i][j] = new Tile(i, j, col);
+      boardArray[i][j] = new Tile(i, j, col, "none");
 
       if (i == 0 && (j == 0 || j == 7)) {
         col.innerHTML = CONSTANTS.bR;
@@ -48,6 +48,11 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
         boardArray[i][j].piece = "o"; //Black pawn
       }
 
+      if (i == 0 || i == 1) {
+        //This is the black team rows
+        boardArray[i][j].team = "black";
+      }
+
       if (i == 7 && (j == 0 || j == 7)) {
         col.innerHTML = CONSTANTS.wR;
         boardArray[i][j].piece = "r"; //White rook
@@ -71,6 +76,11 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       if (i == 6) {
         col.innerHTML = CONSTANTS.wP;
         boardArray[i][j].piece = "p"; //White pawn
+      }
+
+      if (i == 6 || i == 7) {
+        //This is the white team rows
+        boardArray[i][j].team = "white";
       }
 
       col.addEventListener("click", function () {
