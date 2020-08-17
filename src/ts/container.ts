@@ -1,18 +1,18 @@
-let xlabel = ["a", "b", "c", "d", "e", "f", "g", "h"];
+const xlabel = ["a", "b", "c", "d", "e", "f", "g", "h"];
 let ylabel = ["1", "2", "3", "4", "5", "6", "7", "8"];
 ylabel = ylabel.reverse();
 
 export function labels() {
-  let containerTop: Element | null = document.querySelector(".row-1");
-  let containerBottom: Element | null = document.querySelector(".row-3");
-  let containerLeft: Element | null = document.querySelector(".col-1");
-  let containerRight: Element | null = document.querySelector(".col-3");
+  const containerTop: Element | null = document.querySelector(".row-1");
+  const containerBottom: Element | null = document.querySelector(".row-3");
+  const containerLeft: Element | null = document.querySelector(".col-1");
+  const containerRight: Element | null = document.querySelector(".col-3");
 
   for (let i = 0; i < 10; i++) {
-    let col: Element = document.createElement("div");
-    let col2: Element = document.createElement("div");
-    let row: Element = document.createElement("div");
-    let row2: Element = document.createElement("div");
+    const col: Element = document.createElement("div");
+    const col2: Element = document.createElement("div");
+    const row: Element = document.createElement("div");
+    const row2: Element = document.createElement("div");
     col.classList.add("col");
     col2.classList.add("col");
     row.classList.add("row");

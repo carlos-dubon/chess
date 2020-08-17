@@ -9,15 +9,15 @@ const boardArray = UTILS.create2DArray(
 );
 
 let clickCounter: number = 0;
-let initialPosition: Tile;
-let finalPosition: Tile;
+let startPosition: Tile;
+let endPosition: Tile;
 
 export function createBoard(rows: number, cols: number, board: Element | null) {
   for (let i = 0; i < rows; i++) {
-    let row = document.createElement("div");
+    const row = document.createElement("div");
     row.classList.add("row");
     for (let j = 0; j < cols; j++) {
-      let col = document.createElement("div");
+      const col = document.createElement("div");
       col.classList.add("col");
       col.setAttribute("data-row", `${i}`);
       col.setAttribute("data-col", `${j}`);
@@ -81,19 +81,18 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
         if (clickCounter == 1) {
           //Initial position
-          initialPosition =
+          startPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
         } else {
           //Final position
-          finalPosition =
+          endPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
+          validation(startPosition, endPosition);
         }
-
-        validation(initialPosition, finalPosition);
       });
 
       row.appendChild(col);
