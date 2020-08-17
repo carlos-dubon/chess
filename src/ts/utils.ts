@@ -6,14 +6,10 @@ export function create2DArray(rows: number, cols: number): Array<Array<any>> {
   return arr;
 }
 
-export function getTilePosition(tile: any): Array<number> {
+export function getTilePosition(tile: HTMLElement): Array<number> {
   let currentTile = tile.dataset;
   let keys: any = Object.values(currentTile);
   let x: number = keys[0];
   let y: number = keys[1];
   return [x, y];
-}
-
-export function getMovementDirection(){
-
 }

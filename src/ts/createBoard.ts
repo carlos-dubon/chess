@@ -1,16 +1,16 @@
 import * as CONSTANTS from "./constants";
 import * as UTILS from "./utils";
 import Tile from "./Tile";
+import validation from "./validation";
 
 const boardArray = UTILS.create2DArray(
   CONSTANTS.boardRows,
   CONSTANTS.boardCols
 );
 
-let mousePressed: number = 0;
-let initialPosition: Element;
-let finalPosition: Element;
-let piece: string;
+let clickCounter: number = 0;
+let initialPosition: Tile;
+let finalPosition: Tile;
 
 export function createBoard(rows: number, cols: number, board: Element | null) {
   for (let i = 0; i < rows; i++) {
@@ -21,7 +21,6 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       col.classList.add("col");
       col.setAttribute("data-row", `${i}`);
       col.setAttribute("data-col", `${j}`);
-      col.setAttribute("data-position", `${i}${j}`);
       boardArray[i][j] = new Tile(i, j, col);
 
       if (i == 0 && (j == 0 || j == 7)) {
@@ -75,34 +74,26 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       }
 
       col.addEventListener("click", function () {
-        mousePressed++;
-        if (mousePressed == 2) {
-          mousePressed = 0;
+        clickCounter++;
+        if (clickCounter == 2) {
+          clickCounter = 0; //Reset the click counter
         }
 
-        let currentTile: Tile;
-
-        if (mousePressed == 1 && this.innerHTML != "") {
-          initialPosition = this;
-          piece = this.innerHTML;
-          currentTile =
+        if (clickCounter == 1) {
+          //Initial position
+          initialPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
-          currentTile.piece = "none";
-        }
-
-        if (mousePressed == 0 && initialPosition.innerHTML != "") {
-          finalPosition = this;
-          let move = initialPosition.innerHTML;
-          initialPosition.innerHTML = "";
-          finalPosition.innerHTML = move;
-          currentTile =
+        } else {
+          //Final position
+          finalPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
-          currentTile.piece = piece;
         }
+
+        validation(initialPosition, finalPosition);
       });
 
       row.appendChild(col);
