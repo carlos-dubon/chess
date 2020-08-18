@@ -107,7 +107,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
-          validation(startPosition, endPosition);
+          console.log(validation(startPosition, endPosition));
         }
       });
 

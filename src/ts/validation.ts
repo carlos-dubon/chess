@@ -9,7 +9,7 @@ export interface Tile {
   team: string;
 }
 
-export default function validate(start: Tile, end: Tile) {
+export default function validate(start: Tile, end: Tile):boolean {
   const yDistance = getVectorComponents(start, end)[0];
   const xDistance = getVectorComponents(start, end)[1];
 
@@ -20,14 +20,15 @@ export default function validate(start: Tile, end: Tile) {
       if (start.x == 6 || start.x == 1) {
         //Check if the pawn hasn't moved, if not: it has 2 available moves
         if (yDistance <= 2 && xDistance == 0) {
-          //This is an available move for the pawn
           if (start.piece == CONSTANTS.wP) {
             if (end.x < start.x) {
               //This is a valid movement for the white
+              return true;
             }
           } else {
             if (end.x > start.x) {
               //This is a valid movement for the black
+              return true;
             }
           }
         }
@@ -38,10 +39,12 @@ export default function validate(start: Tile, end: Tile) {
           if (start.piece == CONSTANTS.wP) {
             if (end.x < start.x) {
               //This is a valid movement for the white
+              return true;
             }
           } else {
             if (end.x > start.x) {
               //This is a valid movement for the black
+              return true;
             }
           }
         }
@@ -56,7 +59,7 @@ export default function validate(start: Tile, end: Tile) {
         (yDistance == 0 && xDistance <= 7)
       ) {
         //This is an available move for the rook
-        console.log("Este es un movimiento valido para la torre");
+        return true;
       }
     }
   } else if (start.piece == CONSTANTS.wH || start.piece == CONSTANTS.bH) {
@@ -67,7 +70,7 @@ export default function validate(start: Tile, end: Tile) {
         (yDistance == 2 && xDistance == 1) ||
         (yDistance == 1 && xDistance == 2)
       ) {
-        console.log("Este es un movimiento valido para los caballos");
+        return true;
       }
     }
   } else if (start.piece == CONSTANTS.wB || start.piece == CONSTANTS.bB) {
@@ -75,7 +78,7 @@ export default function validate(start: Tile, end: Tile) {
     if (end.piece == "none") {
       //The bishop is just moving
       if (xDistance == yDistance) {
-        //This is a valid movement for the bishop
+        return true;
       }
     }
   } else if (start.piece == CONSTANTS.wQ || start.piece == CONSTANTS.bQ) {
@@ -87,7 +90,7 @@ export default function validate(start: Tile, end: Tile) {
         (yDistance <= 7 && xDistance == 0) ||
         (yDistance == 0 && xDistance <= 7)
       ) {
-        //This is a valid movement for the queen
+        return true;
       }
     }
   } else if (start.piece == CONSTANTS.wK || start.piece == CONSTANTS.bK) {
@@ -95,10 +98,11 @@ export default function validate(start: Tile, end: Tile) {
     if (end.piece == "none") {
       //The king is just moving
       if (yDistance == 1 || xDistance == 1) {
-        console.log("This is a valid movement");
+        return true;
       }
     }
   } else {
-    //Nothing was selected
+    return false;
   }
+  return false;
 }
