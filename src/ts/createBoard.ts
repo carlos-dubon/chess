@@ -114,6 +114,8 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             ];
           if (validation(startPosition, endPosition)) {
             //If the movement is valid
+
+            //Visual movement
             endIcon = this;
             const move = startIcon.innerHTML;
             endIcon.innerHTML = move;
