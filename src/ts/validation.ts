@@ -99,11 +99,28 @@ export default function validate(start: Tile, end: Tile): boolean {
       ) {
         return true;
       }
+    } else if (
+      (start.team == "white" && end.team == "black") ||
+      (start.team == "black" && end.team == "white")
+    ) {
+      if (
+        (yDistance == 2 && xDistance == 1) ||
+        (yDistance == 1 && xDistance == 2)
+      ) {
+        return true;
+      }
     }
   } else if (start.piece == CONSTANTS.wB || start.piece == CONSTANTS.bB) {
     //A bishop was selected
     if (end.piece == "none") {
       //The bishop is just moving
+      if (xDistance == yDistance) {
+        return true;
+      }
+    } else if (
+      (start.team == "white" && end.team == "black") ||
+      (start.team == "black" && end.team == "white")
+    ) {
       if (xDistance == yDistance) {
         return true;
       }
@@ -119,11 +136,29 @@ export default function validate(start: Tile, end: Tile): boolean {
       ) {
         return true;
       }
+    } else if (
+      (start.team == "white" && end.team == "black") ||
+      (start.team == "black" && end.team == "white")
+    ) {
+      if (
+        xDistance == yDistance ||
+        (yDistance <= 7 && xDistance == 0) ||
+        (yDistance == 0 && xDistance <= 7)
+      ) {
+        return true;
+      }
     }
   } else if (start.piece == CONSTANTS.wK || start.piece == CONSTANTS.bK) {
     //A king was selected
     if (end.piece == "none") {
       //The king is just moving
+      if (yDistance == 1 || xDistance == 1) {
+        return true;
+      }
+    } else if (
+      (start.team == "white" && end.team == "black") ||
+      (start.team == "black" && end.team == "white")
+    ) {
       if (yDistance == 1 || xDistance == 1) {
         return true;
       }
