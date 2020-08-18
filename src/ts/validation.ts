@@ -23,25 +23,25 @@ export default function validate(start: Tile, end: Tile) {
           //This is an available move for the pawn
           if (start.piece == CONSTANTS.wP) {
             if (end.x < start.x) {
-              //This is a valid movement for the whites
+              //This is a valid movement for the white
             }
           } else {
             if (end.x > start.x) {
-              //This is a valid movement for the blacks
+              //This is a valid movement for the black
             }
           }
         }
       } else {
-        //The pawn only has 1 upward move available
+        //The pawn only has 1 move available
         if (yDistance <= 1 && xDistance == 0) {
           //This is an available move for the pawn
           if (start.piece == CONSTANTS.wP) {
             if (end.x < start.x) {
-              //This is a valid movement for the whites
+              //This is a valid movement for the white
             }
           } else {
             if (end.x > start.x) {
-              //This is a valid movement for the blacks
+              //This is a valid movement for the black
             }
           }
         }
@@ -56,6 +56,7 @@ export default function validate(start: Tile, end: Tile) {
         (yDistance == 0 && xDistance <= 7)
       ) {
         //This is an available move for the rook
+        console.log("Este es un movimiento valido para la torre");
       }
     }
   } else if (start.piece == CONSTANTS.wH || start.piece == CONSTANTS.bH) {
@@ -66,11 +67,17 @@ export default function validate(start: Tile, end: Tile) {
         (yDistance == 2 && xDistance == 1) ||
         (yDistance == 1 && xDistance == 2)
       ) {
-        console.log("The knight can move here!");
+        console.log("Este es un movimiento valido para los caballos");
       }
     }
   } else if (start.piece == CONSTANTS.wB || start.piece == CONSTANTS.bB) {
     //A bishop was selected
+    if (end.piece == "none") {
+      //The bishop is just moving
+      if (xDistance == yDistance) {
+        //This is a valid movement fot the bishop
+      }
+    }
   } else if (start.piece == CONSTANTS.wQ || start.piece == CONSTANTS.bQ) {
     //A queen was selected
   } else if (start.piece == CONSTANTS.wK || start.piece == CONSTANTS.bK) {
