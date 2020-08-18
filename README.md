@@ -1,5 +1,7 @@
 # chess
->Work in progress*
+## Installation
+    $ git clone https://github.com/carlos-dubon/chess.git
+    $ npm i
 ## Production build
 
     $ npm run build
