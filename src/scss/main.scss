@@ -2,11 +2,15 @@
 @import "constants";
 @import "container";
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 body {
@@ -72,4 +76,35 @@ body {
   background: $activeColor;
   opacity: 0.6;
   z-index: -1;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: $boardSize;
+  .game-stats {
+    width: 480px;
+    font-family: "Lato", sans-serif;
+    margin-right: 35px;
+    .header {
+      color: white;
+      width: 480px;
+      height: 112px;
+      background: #37425e;
+      border-radius: 3px;
+      padding: 23px;
+      h1 {
+        font-size: 32px;
+        padding-bottom: 5px;
+      }
+      p {
+        font-size: 16px;
+      }
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
