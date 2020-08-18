@@ -1,8 +1,10 @@
 @font-face {
-  font-family: "Chess-Regular";
-  src: url("../webfonts/Chess-Regular.ttf.woff") format("woff"),
-    url("../webfonts/Chess-Regular.ttf.eot"),
-    url("../webfonts/Chess-Regular.ttf.eot?#iefix") format("embedded-opentype");
+  font-family: 'Chess Alpha';
+  src: url('../webfonts/ChessAlpha.woff2') format('woff2'),
+      url('../webfonts/ChessAlpha.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
+
