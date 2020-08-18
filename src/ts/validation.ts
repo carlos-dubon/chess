@@ -75,13 +75,29 @@ export default function validate(start: Tile, end: Tile) {
     if (end.piece == "none") {
       //The bishop is just moving
       if (xDistance == yDistance) {
-        //This is a valid movement fot the bishop
+        //This is a valid movement for the bishop
       }
     }
   } else if (start.piece == CONSTANTS.wQ || start.piece == CONSTANTS.bQ) {
     //A queen was selected
+    if (end.piece == "none") {
+      //The queen is just moving
+      if (
+        xDistance == yDistance ||
+        (yDistance <= 7 && xDistance == 0) ||
+        (yDistance == 0 && xDistance <= 7)
+      ) {
+        //This is a valid movement for the queen
+      }
+    }
   } else if (start.piece == CONSTANTS.wK || start.piece == CONSTANTS.bK) {
     //A king was selected
+    if (end.piece == "none") {
+      //The king is just moving
+      if (yDistance == 1 || xDistance == 1) {
+        console.log("This is a valid movement");
+      }
+    }
   } else {
     //Nothing was selected
   }
