@@ -12,6 +12,9 @@ let clickCounter: number = 0;
 let startPosition: Tile;
 let endPosition: Tile;
 
+let startIcon: Element;
+let endIcon: Element;
+
 export function createBoard(rows: number, cols: number, board: Element | null) {
   for (let i = 0; i < rows; i++) {
     const row = document.createElement("div");
@@ -90,8 +93,9 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
         }
 
         if (clickCounter == 1) {
-          //Initial position
+          //First click
           if (
+            //If the user didn't clicked an empty tile
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ].piece != "none"
@@ -100,14 +104,21 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               boardArray[UTILS.getTilePosition(this)[0]][
                 UTILS.getTilePosition(this)[1]
               ];
+            startIcon = this;
           }
         } else {
-          //Final position
+          //Second click
           endPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
-          console.log(validation(startPosition, endPosition));
+          if (validation(startPosition, endPosition)) {
+            //If the movement is valid
+            endIcon = this;
+            const move = startIcon.innerHTML;
+            endIcon.innerHTML = move;
+            startIcon.innerHTML = "";
+          }
         }
       });
 
