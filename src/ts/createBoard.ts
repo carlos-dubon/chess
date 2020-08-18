@@ -25,27 +25,27 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
       if (i == 0 && (j == 0 || j == 7)) {
         col.innerHTML = CONSTANTS.bR;
-        boardArray[i][j].piece = "t"; //Black rook
+        boardArray[i][j].piece = CONSTANTS.bR; //Black rook
       }
       if (i == 0 && (j == 1 || j == 6)) {
         col.innerHTML = CONSTANTS.bH;
-        boardArray[i][j].piece = "j"; //Black knight
+        boardArray[i][j].piece = CONSTANTS.bH; //Black knight
       }
       if (i == 0 && (j == 2 || j == 5)) {
         col.innerHTML = CONSTANTS.bB;
-        boardArray[i][j].piece = "n"; //Black bishop
+        boardArray[i][j].piece = CONSTANTS.bB; //Black bishop
       }
       if (i == 0 && j == 3) {
         col.innerHTML = CONSTANTS.bK;
-        boardArray[i][j].piece = "l"; //Black king
+        boardArray[i][j].piece = CONSTANTS.bK; //Black king
       }
       if (i == 0 && j == 4) {
         col.innerHTML = CONSTANTS.bQ;
-        boardArray[i][j].piece = "w"; //Black queen
+        boardArray[i][j].piece = CONSTANTS.bQ; //Black queen
       }
       if (i == 1) {
         col.innerHTML = CONSTANTS.bP;
-        boardArray[i][j].piece = "o"; //Black pawn
+        boardArray[i][j].piece = CONSTANTS.bP; //Black pawn
       }
 
       if (i == 0 || i == 1) {
@@ -55,27 +55,27 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
       if (i == 7 && (j == 0 || j == 7)) {
         col.innerHTML = CONSTANTS.wR;
-        boardArray[i][j].piece = "r"; //White rook
+        boardArray[i][j].piece = CONSTANTS.wR; //White rook
       }
       if (i == 7 && (j == 1 || j == 6)) {
         col.innerHTML = CONSTANTS.wH;
-        boardArray[i][j].piece = "h"; //White knight
+        boardArray[i][j].piece = CONSTANTS.wH; //White knight
       }
       if (i == 7 && (j == 2 || j == 5)) {
         col.innerHTML = CONSTANTS.wB;
-        boardArray[i][j].piece = "b"; //White bishop
+        boardArray[i][j].piece = CONSTANTS.wB; //White bishop
       }
       if (i == 7 && j == 3) {
         col.innerHTML = CONSTANTS.wQ;
-        boardArray[i][j].piece = "q"; //White queen
+        boardArray[i][j].piece = CONSTANTS.wQ; //White queen
       }
       if (i == 7 && j == 4) {
         col.innerHTML = CONSTANTS.wK;
-        boardArray[i][j].piece = "k"; //White king
+        boardArray[i][j].piece = CONSTANTS.wK; //White king
       }
       if (i == 6) {
         col.innerHTML = CONSTANTS.wP;
-        boardArray[i][j].piece = "p"; //White pawn
+        boardArray[i][j].piece = CONSTANTS.wP; //White pawn
       }
 
       if (i == 6 || i == 7) {
