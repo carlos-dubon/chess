@@ -9,7 +9,7 @@ export interface Tile {
   team: string;
 }
 
-export default function validate(start: Tile, end: Tile):boolean {
+export default function validate(start: Tile, end: Tile): boolean {
   const yDistance = getVectorComponents(start, end)[0];
   const xDistance = getVectorComponents(start, end)[1];
 
@@ -49,11 +49,38 @@ export default function validate(start: Tile, end: Tile):boolean {
           }
         }
       }
+    } else if (
+      (start.team == "white" && end.team == "black") ||
+      (start.team == "black" && end.team == "white")
+    ) {
+      //The pawn is eating
+      if (start.team == "white") {
+        //The white pawn is eating
+        if (end.x < start.x && yDistance <= 1 && xDistance == 1) {
+          return true;
+        }
+      } else if (start.team == "black") {
+        //The black pawn is eating
+        if (end.x > start.x && yDistance <= 1 && xDistance == 1) {
+          return true;
+        }
+      }
     }
   } else if (start.piece == CONSTANTS.wR || start.piece == CONSTANTS.bR) {
     //A rook was selected
     if (end.piece == "none") {
       //The rook is just moving
+      if (
+        (yDistance <= 7 && xDistance == 0) ||
+        (yDistance == 0 && xDistance <= 7)
+      ) {
+        //This is an available move for the rook
+        return true;
+      }
+    } else if (
+      (start.team == "white" && end.team == "black") ||
+      (start.team == "black" && end.team == "white")
+    ) {
       if (
         (yDistance <= 7 && xDistance == 0) ||
         (yDistance == 0 && xDistance <= 7)

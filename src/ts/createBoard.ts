@@ -88,12 +88,13 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
       col.addEventListener("click", function () {
         clickCounter++;
+
         if (clickCounter == 2) {
           clickCounter = 0; //Reset the click counter
         }
 
-        //First click
-        try {
+        if (clickCounter == 1) {
+          //First click
           if (
             //If the user didn't clicked an empty tile
             boardArray[UTILS.getTilePosition(this)[0]][
@@ -106,28 +107,27 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               ];
             startIcon = this;
           }
-        } catch (e) {
-          console.error(e);
-        }
-        //Second click
-        endPosition =
-          boardArray[UTILS.getTilePosition(this)[0]][
-            UTILS.getTilePosition(this)[1]
-          ];
-        if (validation(startPosition, endPosition)) {
-          //If the movement is valid
+        } else {
+          //Second click
+          endPosition =
+            boardArray[UTILS.getTilePosition(this)[0]][
+              UTILS.getTilePosition(this)[1]
+            ];
+          if (validation(startPosition, endPosition)) {
+            //If the movement is valid
 
-          endPosition.piece = startPosition.piece;
-          endPosition.team = startPosition.team;
+            endPosition.piece = startPosition.piece;
+            endPosition.team = startPosition.team;
 
-          startPosition.piece = "none";
-          startPosition.team = "none";
+            startPosition.piece = "none";
+            startPosition.team = "none";
 
-          //Visual movement
-          endIcon = this;
-          const move = startIcon.innerHTML;
-          endIcon.innerHTML = move;
-          startIcon.innerHTML = "";
+            //Visual movement
+            endIcon = this;
+            const move = startIcon.innerHTML;
+            endIcon.innerHTML = move;
+            startIcon.innerHTML = "";
+          }
         }
       });
 
