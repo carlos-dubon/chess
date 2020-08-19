@@ -152,19 +152,26 @@ export default function validate(start: Tile, end: Tile): boolean {
     //A king was selected
     if (end.piece == "none") {
       //The king is just moving
-      if (yDistance == 1 || xDistance == 1) {
+      if (
+        (yDistance == 1 && xDistance == 0) ||
+        (xDistance == 1 && yDistance == 0) ||
+        (xDistance == 1 && yDistance == 1)
+      ) {
         return true;
       }
     } else if (
+      //The king is eating
       (start.team == "white" && end.team == "black") ||
       (start.team == "black" && end.team == "white")
     ) {
-      if (yDistance == 1 || xDistance == 1) {
+      if (
+        (yDistance == 1 && xDistance == 0) ||
+        (xDistance == 1 && yDistance == 0) ||
+        (xDistance == 1 && yDistance == 1)
+      ) {
         return true;
       }
     }
-  } else {
-    return false;
   }
   return false;
 }
