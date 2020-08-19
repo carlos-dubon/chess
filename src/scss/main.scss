@@ -87,6 +87,9 @@ body {
     font-family: "Lato", sans-serif;
     margin-right: 35px;
     .header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       color: white;
       width: 480px;
       height: 112px;
