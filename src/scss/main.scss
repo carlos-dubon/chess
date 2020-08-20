@@ -109,5 +109,107 @@ body {
         }
       }
     }
+
+    .stats {
+      color: white;
+      padding: 23px;
+      margin-top: 30px;
+      background: #37425e;
+      border-radius: 3px;
+      width: 480px;
+      height: 265px;
+      h2 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      h3 {
+        font-weight: normal;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+      .players {
+        display: flex;
+        flex-direction: row;
+        width: 385px;
+        height: 50px;
+        background: #293248;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 3px;
+        cursor: default;
+        user-select: none;
+        .player-1 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #293248;
+          width: 50%;
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+        }
+        .player-2 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #252d42;
+          width: 50%;
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+      }
+      .controls-wrapper {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+      }
+      .controls {
+        display: flex;
+        flex-direction: row;
+      }
+      .stopwatch {
+        margin-right: 15px;
+        display: flex;
+        flex-direction: row;
+        width: 103px;
+        height: 50px;
+        background: #293248;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 3px;
+        cursor: default;
+        user-select: none;
+        .minutes {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #293248;
+          width: 50%;
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+        }
+        .seconds {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #252d42;
+          width: 50%;
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+      }
+      .new-game {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 118px;
+        height: 50px;
+        background: #293248;
+        border-radius: 3px;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
   }
 }

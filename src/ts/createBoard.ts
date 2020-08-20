@@ -113,6 +113,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
+
           if (validation(startPosition, endPosition)) {
             //If the movement is valid
 
