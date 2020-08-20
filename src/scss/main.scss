@@ -210,10 +210,15 @@ body {
         font-weight: bold;
         font-size: 16px;
         transition: 0.3s;
-        &:hover{
+        &:hover {
           background: #252d42;
         }
       }
     }
   }
+}
+
+.fa-circle {
+  font-size: 10px;
+  color: #14ff00;
 }
