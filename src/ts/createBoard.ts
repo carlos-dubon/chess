@@ -2,13 +2,14 @@ import * as CONSTANTS from "./constants";
 import * as UTILS from "./utils";
 import Tile from "./Tile";
 import validation from "./validation";
+import { stats } from "./stats";
 
 const boardArray = UTILS.create2DArray(
   CONSTANTS.boardRows,
   CONSTANTS.boardCols
 );
 
-let clickCounter: number = 0;
+let click: boolean = false;
 let startPosition: Tile;
 let endPosition: Tile;
 
@@ -89,21 +90,17 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
       }
 
       col.addEventListener("click", function () {
-        clickCounter++;
-
-        if (clickCounter == 2) {
-          clickCounter = 0; //Reset the click counter
-        }
+        click = click ? false : true;
 
         if (
           boardArray[UTILS.getTilePosition(this)[0]][
             UTILS.getTilePosition(this)[1]
           ].team == "none"
         ) {
-          clickCounter = 0;
+          click = false;
         }
 
-        if (clickCounter == 1) {
+        if (click) {
           //First click
           startPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
@@ -133,11 +130,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
             //A turn has been played
             turn = turn ? false : true; //turn becomes false
-            if (turn) {
-              //player 1 turn
-            } else {
-              //player 2 turn
-            }
+            stats(turn);
           }
         }
       });
