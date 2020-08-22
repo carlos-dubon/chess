@@ -10,5 +10,7 @@
     $ npm run serve
 >You can view the development server at localhost:8081
 
+## Demo
+https://carlos-dubon.github.io/chess/
 ## License
 [MIT](https://github.com/carlos-dubon/chess/blob/master/LICENSE)
