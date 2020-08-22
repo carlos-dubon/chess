@@ -15,6 +15,8 @@ let endPosition: Tile;
 let startIcon: Element;
 let endIcon: Element;
 
+let turn: boolean = true;
+
 export function createBoard(rows: number, cols: number, board: Element | null) {
   for (let i = 0; i < rows; i++) {
     const row = document.createElement("div");
@@ -93,27 +95,27 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
           clickCounter = 0; //Reset the click counter
         }
 
+        if (
+          boardArray[UTILS.getTilePosition(this)[0]][
+            UTILS.getTilePosition(this)[1]
+          ].team == "none"
+        ) {
+          clickCounter = 0;
+        }
+
         if (clickCounter == 1) {
           //First click
-          if (
-            //If the user didn't clicked an empty tile
+          startPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
-            ].piece != "none"
-          ) {
-            startPosition =
-              boardArray[UTILS.getTilePosition(this)[0]][
-                UTILS.getTilePosition(this)[1]
-              ];
-            startIcon = this;
-          }
+            ];
+          startIcon = this;
         } else {
           //Second click
           endPosition =
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
             ];
-
           if (validation(startPosition, endPosition)) {
             //If the movement is valid
 
@@ -128,6 +130,14 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             const move = startIcon.innerHTML;
             endIcon.innerHTML = move;
             startIcon.innerHTML = "";
+
+            //A turn has been played
+            turn = turn ? false : true; //turn becomes false
+            if (turn) {
+              //player 1 turn
+            } else {
+              //player 2 turn
+            }
           }
         }
       });
