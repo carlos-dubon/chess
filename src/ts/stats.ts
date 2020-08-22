@@ -1,3 +1,6 @@
+//If turn is true => p1 turn
+//If turn is false => p2 turn
+
 export function stats(turn: boolean) {
   const p1: HTMLDivElement | null = document.querySelector(".player-1");
   const p2: HTMLDivElement | null = document.querySelector(".player-2");

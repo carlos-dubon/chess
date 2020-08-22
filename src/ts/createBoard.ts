@@ -18,6 +18,8 @@ let endIcon: Element;
 
 let turn: boolean = true;
 
+let sec: number = 30;
+
 export function createBoard(rows: number, cols: number, board: Element | null) {
   for (let i = 0; i < rows; i++) {
     const row = document.createElement("div");
@@ -131,6 +133,7 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             //A turn has been played
             turn = turn ? false : true; //turn becomes false
             stats(turn);
+            sec = 30;
           }
         }
       });
@@ -146,3 +149,20 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
     board?.append(row);
   }
 }
+
+setInterval(() => {
+  if (sec == 0) {
+    sec = 30;
+    turn = turn ? false : true; //turn becomes false
+    stats(turn);
+  }
+  sec--;
+  let sectxt = String(sec);
+  if (sectxt.length == 1) {
+    sectxt = `0${sectxt}`;
+  }
+
+  if (CONSTANTS.seconds != null) {
+    CONSTANTS.seconds.innerHTML = sectxt;
+  }
+}, 1000);

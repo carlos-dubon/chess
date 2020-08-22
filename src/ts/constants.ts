@@ -15,3 +15,5 @@ export const bR: string = "t"; //Black rook
 export const bB: string = "n"; //Black bishop
 export const bH: string = "j"; //Black knight
 export const bP: string = "o"; //Black pawn
+
+export const seconds: Element | null = document.querySelector(".seconds");
