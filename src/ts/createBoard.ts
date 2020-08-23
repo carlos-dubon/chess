@@ -106,6 +106,23 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
           click = false;
         }
 
+        if (
+          turn &&
+          boardArray[UTILS.getTilePosition(this)[0]][
+            UTILS.getTilePosition(this)[1]
+          ].team == "black"
+        ) {
+          click = false;
+        }
+        if (
+          !turn &&
+          boardArray[UTILS.getTilePosition(this)[0]][
+            UTILS.getTilePosition(this)[1]
+          ].team == "white"
+        ) {
+          click = false;
+        }
+
         if (click) {
           //First click
           startPosition =
@@ -113,12 +130,6 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               UTILS.getTilePosition(this)[1]
             ];
           startIcon = this;
-          if (turn && startPosition.team == "black") {
-            click = false;
-          }
-          if (!turn && startPosition.team == "white") {
-            click = false;
-          }
         } else {
           //Second click
           endPosition =
