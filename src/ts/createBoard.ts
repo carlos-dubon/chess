@@ -113,6 +113,12 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               UTILS.getTilePosition(this)[1]
             ];
           startIcon = this;
+          if (turn && startPosition.team == "black") {
+            click = false;
+          }
+          if (!turn && startPosition.team == "white") {
+            click = false;
+          }
         } else {
           //Second click
           endPosition =
