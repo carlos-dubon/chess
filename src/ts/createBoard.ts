@@ -4,6 +4,10 @@ import Tile from "./Tile";
 import validation from "./validation";
 import { stats } from "./stats";
 
+const move1 = new Audio("../audio/move1.mp3");
+const move2 = new Audio("../audio/move2.mp3");
+const capture = new Audio("../audio/capture1.mp3");
+
 const boardArray = UTILS.create2DArray(
   CONSTANTS.boardRows,
   CONSTANTS.boardCols
@@ -117,6 +121,15 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             ];
           if (validation(startPosition, endPosition)) {
             //If the movement is valid
+
+            if (
+              (startPosition.team == "white" && endPosition.team == "black") ||
+              (startPosition.team == "black" && endPosition.team == "white")
+            ) {
+              capture.play();
+            } else {
+              turn ? move1.play() : move2.play();
+            }
 
             endPosition.piece = startPosition.piece;
             endPosition.team = startPosition.team;

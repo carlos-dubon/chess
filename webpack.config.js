@@ -42,6 +42,20 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(mp3)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "./audio",
+              publicPath: "./audio",
+              name: "./[name].[ext]",
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(woff|woff2|eot|ttf)$/,
         use: [
           {
@@ -67,7 +81,10 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({ filename: "[name].css" }),
     new CopyPlugin({
-      patterns: [{ from: "src/images", to: "images" }],
+      patterns: [
+        { from: "src/images", to: "images" },
+        { from: "src/audio", to: "audio" },
+      ],
     }),
   ],
 };
