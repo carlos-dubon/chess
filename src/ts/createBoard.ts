@@ -123,30 +123,67 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
             //If the movement is valid
 
             if (
-              (startPosition.team == "white" && endPosition.team == "black") ||
-              (startPosition.team == "black" && endPosition.team == "white")
+              (turn &&
+                startPosition.team == "white" &&
+                endPosition.team == "black") ||
+              (turn &&
+                startPosition.team == "white" &&
+                endPosition.team == "none")
             ) {
-              capture.play();
-            } else {
-              turn ? move1.play() : move2.play();
+              // White turn
+              if (endPosition.team == "black") {
+                capture.play();
+              } else {
+                turn ? move1.play() : move2.play();
+              }
+
+              endPosition.piece = startPosition.piece;
+              endPosition.team = startPosition.team;
+
+              startPosition.piece = "none";
+              startPosition.team = "none";
+
+              //Visual movement
+              endIcon = this;
+              const move = startIcon.innerHTML;
+              endIcon.innerHTML = move;
+              startIcon.innerHTML = "";
+
+              //A turn has been played
+              turn = turn ? false : true; //turn becomes false
+              stats(turn);
+              sec = 30;
+            } else if (
+              (!turn &&
+                startPosition.team == "black" &&
+                endPosition.team == "white") ||
+              (!turn &&
+                startPosition.team == "black" &&
+                endPosition.team == "none")
+            ) {
+              //Black turn
+              if (endPosition.team == "white") {
+                capture.play();
+              } else {
+                turn ? move1.play() : move2.play();
+              }
+              endPosition.piece = startPosition.piece;
+              endPosition.team = startPosition.team;
+
+              startPosition.piece = "none";
+              startPosition.team = "none";
+
+              //Visual movement
+              endIcon = this;
+              const move = startIcon.innerHTML;
+              endIcon.innerHTML = move;
+              startIcon.innerHTML = "";
+
+              //A turn has been played
+              turn = turn ? false : true; //turn becomes false
+              stats(turn);
+              sec = 30;
             }
-
-            endPosition.piece = startPosition.piece;
-            endPosition.team = startPosition.team;
-
-            startPosition.piece = "none";
-            startPosition.team = "none";
-
-            //Visual movement
-            endIcon = this;
-            const move = startIcon.innerHTML;
-            endIcon.innerHTML = move;
-            startIcon.innerHTML = "";
-
-            //A turn has been played
-            turn = turn ? false : true; //turn becomes false
-            stats(turn);
-            sec = 30;
           }
         }
       });
