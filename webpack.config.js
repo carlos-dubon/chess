@@ -28,34 +28,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|svg|jpe?g|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: "./images",
-              publicPath: "./images",
-              name: "./[name].[ext]",
-            },
-          },
-        ],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(mp3)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: "./audio",
-              publicPath: "./audio",
-              name: "./[name].[ext]",
-            },
-          },
-        ],
-        exclude: /node_modules/,
-      },
-      {
         test: /\.(woff|woff2|eot|ttf)$/,
         use: [
           {
