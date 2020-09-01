@@ -8,7 +8,7 @@ const move1 = new Audio("./audio/move1.mp3");
 const move2 = new Audio("./audio/move2.mp3");
 const capture = new Audio("./audio/capture1.mp3");
 
-const boardArray = UTILS.create2DArray(
+export const boardArray = UTILS.create2DArray(
   CONSTANTS.boardRows,
   CONSTANTS.boardCols
 );

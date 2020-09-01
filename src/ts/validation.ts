@@ -1,3 +1,4 @@
+import { boardArray } from "./createBoard";
 import * as CONSTANTS from "./constants";
 import { getVectorComponents } from "./utils";
 
@@ -7,6 +8,82 @@ export interface Tile {
   tile: Element;
   piece: string;
   team: string;
+}
+
+function watch(start: Tile, end: Tile, path: string): boolean {
+  let pieceSeen = false;
+  const pieceArr = [];
+
+  if (path == "verticalup") {
+    for (let i = start.x - 1; i > end.x; i--) {
+      pieceArr.push(boardArray[i][start.y].piece);
+    }
+  } else if (path == "verticaldown") {
+    for (let i = start.x + 1; i < end.x; i++) {
+      pieceArr.push(boardArray[i][start.y].piece);
+    }
+  }
+  if (path == "horizontalleft") {
+    for (let i = start.y - 1; i > end.y; i--) {
+      pieceArr.push(boardArray[start.x][i].piece);
+    }
+  }
+  if (path == "horizontalright") {
+    for (let i = start.y + 1; i < end.y; i++) {
+      pieceArr.push(boardArray[start.x][i].piece);
+    }
+  }
+
+  const xCoordinates = [];
+  const yCoordinates = [];
+
+  if (path == "diagonalrightup") {
+    for (let i = start.y + 1; i < end.y; i++) {
+      xCoordinates.push(i);
+    }
+    for (let j = start.x - 1; j > end.x; j--) {
+      yCoordinates.push(j);
+    }
+  }
+
+  if (path == "diagonalleftup") {
+    for (let i = start.y - 1; i > end.y; i--) {
+      xCoordinates.push(i);
+    }
+    for (let j = start.x - 1; j > end.x; j--) {
+      yCoordinates.push(j);
+    }
+  }
+
+  if (path == "diagonalrightdown") {
+    for (let i = start.y + 1; i < end.y; i++) {
+      xCoordinates.push(i);
+    }
+    for (let j = start.x + 1; j < end.x; j++) {
+      yCoordinates.push(j);
+    }
+  }
+
+  if (path == "diagonalleftdown") {
+    for (let i = start.y + 1; i < end.y; i++) {
+      xCoordinates.push(i);
+    }
+    for (let j = start.x + 1; j < end.x; j++) {
+      yCoordinates.push(j);
+    }
+  }
+
+  for (let i = 0; i < xCoordinates.length; i++) {
+    pieceArr.push(boardArray[yCoordinates[i]][xCoordinates[i]].piece);
+  }
+
+  pieceArr.forEach((piece) => {
+    if (piece != "none") {
+      pieceSeen = true;
+    }
+  });
+
+  return pieceSeen;
 }
 
 export default function validate(start: Tile, end: Tile): boolean {
@@ -21,12 +98,12 @@ export default function validate(start: Tile, end: Tile): boolean {
         //Check if the pawn hasn't moved, if not: it has 2 available moves
         if (yDistance <= 2 && xDistance == 0) {
           if (start.piece == CONSTANTS.wP) {
-            if (end.x < start.x) {
+            if (end.x < start.x && !watch(start, end, "verticalup")) {
               //This is a valid movement for the white
               return true;
             }
           } else {
-            if (end.x > start.x) {
+            if (end.x > start.x && !watch(start, end, "verticaldown")) {
               //This is a valid movement for the black
               return true;
             }
@@ -75,7 +152,18 @@ export default function validate(start: Tile, end: Tile): boolean {
         (yDistance == 0 && xDistance <= 7)
       ) {
         //This is an available move for the rook
-        return true;
+        if (end.x < start.x && !watch(start, end, "verticalup")) {
+          return true;
+        }
+        if (end.x > start.x && !watch(start, end, "verticaldown")) {
+          return true;
+        }
+        if (end.y < start.y && !watch(start, end, "horizontalleft")) {
+          return true;
+        }
+        if (end.y > start.y && !watch(start, end, "horizontalright")) {
+          return true;
+        }
       }
     } else if (
       (start.team == "white" && end.team == "black") ||
@@ -86,7 +174,18 @@ export default function validate(start: Tile, end: Tile): boolean {
         (yDistance == 0 && xDistance <= 7)
       ) {
         //This is an available move for the rook
-        return true;
+        if (end.x < start.x && !watch(start, end, "verticalup")) {
+          return true;
+        }
+        if (end.x > start.x && !watch(start, end, "verticaldown")) {
+          return true;
+        }
+        if (end.y < start.y && !watch(start, end, "horizontalleft")) {
+          return true;
+        }
+        if (end.y > start.y && !watch(start, end, "horizontalright")) {
+          return true;
+        }
       }
     }
   } else if (start.piece == CONSTANTS.wH || start.piece == CONSTANTS.bH) {
@@ -115,7 +214,35 @@ export default function validate(start: Tile, end: Tile): boolean {
     if (end.piece == "none") {
       //The bishop is just moving
       if (xDistance == yDistance) {
-        return true;
+        // return true;
+        if (
+          start.y < end.y &&
+          end.x < start.x &&
+          !watch(start, end, "diagonalrightup")
+        ) {
+          return true;
+        }
+        if (
+          start.y > end.y &&
+          end.x < start.x &&
+          !watch(start, end, "diagonalleftup")
+        ) {
+          return true;
+        }
+        if (
+          end.y > start.y &&
+          end.x > start.x &&
+          !watch(start, end, "diagonalrightdown")
+        ) {
+          return true;
+        }
+        if (
+          end.y < start.y &&
+          end.x > start.x &&
+          !watch(start, end, "diagonalleftdown")
+        ) {
+          return true;
+        }
       }
     } else if (
       (start.team == "white" && end.team == "black") ||
