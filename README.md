@@ -1,4 +1,5 @@
 # chess
+![Ajedrez](./splash.png)
 ## Installation
     $ git clone https://github.com/carlos-dubon/chess.git
     $ npm i
