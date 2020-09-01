@@ -1,3 +1,10 @@
+const stateCheck = setInterval(() => {
+  if (document.readyState === "complete") {
+    clearInterval(stateCheck);
+    document.querySelector(".loader")?.classList.add("loader-done");
+  }
+}, 150);
+
 renderBoard();
 import "@fortawesome/fontawesome-free/js/all.js";
 import "../scss/main.scss";
