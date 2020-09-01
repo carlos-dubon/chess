@@ -97,7 +97,6 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
 
       col.addEventListener("click", function () {
         click = click ? false : true;
-
         if (
           boardArray[UTILS.getTilePosition(this)[0]][
             UTILS.getTilePosition(this)[1]
@@ -201,6 +200,14 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               stats(turn);
               sec = 30;
             }
+          } else if (
+            !validation(startPosition, endPosition) &&
+            startPosition.team != "none"
+          ) {
+            startPosition.tile.classList.add("invalid");
+            setTimeout(() => {
+              startPosition.tile.classList.remove("invalid");
+            }, 450);
           }
         }
       });
