@@ -65,7 +65,7 @@ function watch(start: Tile, end: Tile, path: string): boolean {
   }
 
   if (path == "diagonalleftdown") {
-    for (let i = start.y + 1; i < end.y; i++) {
+    for (let i = start.y - 1; i > end.y; i--) {
       xCoordinates.push(i);
     }
     for (let j = start.x + 1; j < end.x; j++) {
