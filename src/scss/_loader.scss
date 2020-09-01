@@ -1,4 +1,5 @@
 .loader {
+  cursor: wait;
   position: absolute;
   top: 0;
   left: 0;
@@ -34,21 +35,6 @@
   }
   100% {
     transform: translateY(0) rotate(90deg);
-  }
-}
-#shadow {
-  width: 60px;
-  height: 5px;
-  background: #000;
-  opacity: 0.1;
-  border-radius: 50%;
-  animation: shadow 0.5s linear infinite;
-  position: relative;
-  top: 11.2px;
-}
-@keyframes shadow {
-  50% {
-    transform: scale(1.2, 1);
   }
 }
 

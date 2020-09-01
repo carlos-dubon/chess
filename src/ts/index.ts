@@ -2,8 +2,10 @@ const stateCheck = setInterval(() => {
   if (document.readyState === "complete") {
     clearInterval(stateCheck);
     document.querySelector(".loader")?.classList.add("loader-done");
+    const login = new Audio("./audio/login.mp3");
+    login.play();
   }
-}, 150);
+}, 200);
 
 renderBoard();
 import "@fortawesome/fontawesome-free/js/all.js";
