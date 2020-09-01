@@ -214,7 +214,6 @@ export default function validate(start: Tile, end: Tile): boolean {
     if (end.piece == "none") {
       //The bishop is just moving
       if (xDistance == yDistance) {
-        // return true;
         if (
           start.y < end.y &&
           end.x < start.x &&
@@ -249,7 +248,34 @@ export default function validate(start: Tile, end: Tile): boolean {
       (start.team == "black" && end.team == "white")
     ) {
       if (xDistance == yDistance) {
-        return true;
+        if (
+          start.y < end.y &&
+          end.x < start.x &&
+          !watch(start, end, "diagonalrightup")
+        ) {
+          return true;
+        }
+        if (
+          start.y > end.y &&
+          end.x < start.x &&
+          !watch(start, end, "diagonalleftup")
+        ) {
+          return true;
+        }
+        if (
+          end.y > start.y &&
+          end.x > start.x &&
+          !watch(start, end, "diagonalrightdown")
+        ) {
+          return true;
+        }
+        if (
+          end.y < start.y &&
+          end.x > start.x &&
+          !watch(start, end, "diagonalleftdown")
+        ) {
+          return true;
+        }
       }
     }
   } else if (start.piece == CONSTANTS.wQ || start.piece == CONSTANTS.bQ) {
@@ -261,7 +287,49 @@ export default function validate(start: Tile, end: Tile): boolean {
         (yDistance <= 7 && xDistance == 0) ||
         (yDistance == 0 && xDistance <= 7)
       ) {
-        return true;
+        if (xDistance == yDistance) {
+          if (
+            start.y < end.y &&
+            end.x < start.x &&
+            !watch(start, end, "diagonalrightup")
+          ) {
+            return true;
+          }
+          if (
+            start.y > end.y &&
+            end.x < start.x &&
+            !watch(start, end, "diagonalleftup")
+          ) {
+            return true;
+          }
+          if (
+            end.y > start.y &&
+            end.x > start.x &&
+            !watch(start, end, "diagonalrightdown")
+          ) {
+            return true;
+          }
+          if (
+            end.y < start.y &&
+            end.x > start.x &&
+            !watch(start, end, "diagonalleftdown")
+          ) {
+            return true;
+          }
+        } else {
+          if (end.x < start.x && !watch(start, end, "verticalup")) {
+            return true;
+          }
+          if (end.x > start.x && !watch(start, end, "verticaldown")) {
+            return true;
+          }
+          if (end.y < start.y && !watch(start, end, "horizontalleft")) {
+            return true;
+          }
+          if (end.y > start.y && !watch(start, end, "horizontalright")) {
+            return true;
+          }
+        }
       }
     } else if (
       (start.team == "white" && end.team == "black") ||
@@ -272,7 +340,49 @@ export default function validate(start: Tile, end: Tile): boolean {
         (yDistance <= 7 && xDistance == 0) ||
         (yDistance == 0 && xDistance <= 7)
       ) {
-        return true;
+        if (xDistance == yDistance) {
+          if (
+            start.y < end.y &&
+            end.x < start.x &&
+            !watch(start, end, "diagonalrightup")
+          ) {
+            return true;
+          }
+          if (
+            start.y > end.y &&
+            end.x < start.x &&
+            !watch(start, end, "diagonalleftup")
+          ) {
+            return true;
+          }
+          if (
+            end.y > start.y &&
+            end.x > start.x &&
+            !watch(start, end, "diagonalrightdown")
+          ) {
+            return true;
+          }
+          if (
+            end.y < start.y &&
+            end.x > start.x &&
+            !watch(start, end, "diagonalleftdown")
+          ) {
+            return true;
+          }
+        } else {
+          if (end.x < start.x && !watch(start, end, "verticalup")) {
+            return true;
+          }
+          if (end.x > start.x && !watch(start, end, "verticaldown")) {
+            return true;
+          }
+          if (end.y < start.y && !watch(start, end, "horizontalleft")) {
+            return true;
+          }
+          if (end.y > start.y && !watch(start, end, "horizontalright")) {
+            return true;
+          }
+        }
       }
     }
   } else if (start.piece == CONSTANTS.wK || start.piece == CONSTANTS.bK) {
