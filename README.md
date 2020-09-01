@@ -1,6 +1,7 @@
 # chess
 
 ![Ajedrez](./splash.png)
+
 A chess engine written in pure [TypeScript.](https://www.typescriptlang.org/)
 
 ## Installation
