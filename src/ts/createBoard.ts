@@ -201,14 +201,6 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               stats(turn);
               sec = 30;
             }
-          } else if (
-            !validation(startPosition, endPosition) &&
-            startPosition.team != "none"
-          ) {
-            startPosition.tile.classList.add("invalid");
-            setTimeout(() => {
-              startPosition.tile.classList.remove("invalid");
-            }, 450);
           }
         }
       });

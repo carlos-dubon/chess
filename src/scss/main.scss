@@ -54,36 +54,6 @@ body {
   color: $pieceColor;
 }
 
-.invalid {
-  position: relative;
-  animation-name: shake;
-  animation-duration: 0.45s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes shake {
-  10%,
-  90% {
-    text-indent: -1px;
-  }
-
-  20%,
-  80% {
-    text-indent: 2px;
-  }
-
-  30%,
-  50%,
-  70% {
-    text-indent: -4px;
-  }
-
-  40%,
-  60% {
-    text-indent: 4px;
-  }
-}
-
 .board .light {
   background-color: $lightTile;
 }
