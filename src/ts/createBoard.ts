@@ -26,7 +26,7 @@ let turn: boolean = true;
 
 let sec: number = 30;
 
-const time: Array<number> = [1000, 300, 1500, 500, 450, 350, 375, 1650];
+const time: Array<number> = [1700]; // If you want random time add values to this array
 
 function thinkingTime(): number {
   return time[Math.floor(Math.random() * time.length)];
