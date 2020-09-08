@@ -84,7 +84,7 @@ body {
   flex-direction: row;
   height: $boardSize;
   .game-stats {
-    width: 480px;
+    width: 431px;
     font-family: "Lato", sans-serif;
     margin-right: 35px;
     .header {
@@ -92,7 +92,7 @@ body {
       flex-direction: column;
       justify-content: center;
       color: white;
-      width: 480px;
+      width: 431px;
       height: 112px;
       background: #37425e;
       border-radius: 3px;
@@ -117,8 +117,8 @@ body {
       margin-top: 30px;
       background: #37425e;
       border-radius: 3px;
-      width: 480px;
-      height: 265px;
+      width: 431px;
+      // height: 265px;
       h2 {
         font-weight: bold;
         font-size: 20px;

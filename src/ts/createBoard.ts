@@ -3,6 +3,7 @@ import * as UTILS from "./utils";
 import Tile from "./Tile";
 import validation from "./validation";
 import { stats } from "./stats";
+import { blackMove, intelligence } from "./AI";
 
 const move1 = new Audio("./audio/move1.mp3");
 const move2 = new Audio("./audio/move2.mp3");
@@ -24,6 +25,12 @@ let endIcon: Element;
 let turn: boolean = true;
 
 let sec: number = 30;
+
+const time: Array<number> = [1000, 300, 1500, 500, 450, 350, 375, 1650];
+
+function thinkingTime(): number {
+  return time[Math.floor(Math.random() * time.length)];
+}
 
 export function createBoard(rows: number, cols: number, board: Element | null) {
   for (let i = 0; i < rows; i++) {
@@ -170,37 +177,31 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
               turn = turn ? false : true; //turn becomes false
               stats(turn);
               sec = 30;
-            } else if (
-              (!turn &&
-                startPosition.team == "black" &&
-                endPosition.team == "white") ||
-              (!turn &&
-                startPosition.team == "black" &&
-                endPosition.team == "none")
-            ) {
-              //Black turn
-              if (endPosition.team == "white") {
+            }
+            intelligence();
+            setTimeout(() => {
+              const blackStart = blackMove()[0];
+              const blackEnd = blackMove()[1];
+
+              if (blackEnd.team == "white") {
                 capture.play();
               } else {
-                turn ? move1.play() : move2.play();
+                move2.play();
               }
-              endPosition.piece = startPosition.piece;
-              endPosition.team = startPosition.team;
 
-              startPosition.piece = "none";
-              startPosition.team = "none";
+              blackEnd.piece = blackStart.piece;
+              blackEnd.team = blackStart.team;
 
-              //Visual movement
-              endIcon = this;
-              const move = startIcon.innerHTML;
-              endIcon.innerHTML = move;
-              startIcon.innerHTML = "";
+              blackStart.piece = "none";
+              blackStart.team = "none";
 
-              //A turn has been played
+              blackEnd.tile.innerHTML = blackStart.tile.innerHTML;
+              blackStart.tile.innerHTML = "";
+              
               turn = turn ? false : true; //turn becomes false
               stats(turn);
               sec = 30;
-            }
+            }, thinkingTime());
           }
         }
       });
@@ -223,6 +224,30 @@ setInterval(() => {
     turn = turn ? false : true; //turn becomes false
     missedTurn.play();
     stats(turn);
+    intelligence();
+    setTimeout(() => {
+      const blackStart = blackMove()[0];
+      const blackEnd = blackMove()[1];
+
+      if (blackEnd.team == "white") {
+        capture.play();
+      } else {
+        move2.play();
+      }
+
+      blackEnd.piece = blackStart.piece;
+      blackEnd.team = blackStart.team;
+
+      blackStart.piece = "none";
+      blackStart.team = "none";
+
+      blackEnd.tile.innerHTML = blackStart.tile.innerHTML;
+      blackStart.tile.innerHTML = "";
+
+      turn = turn ? false : true; //turn becomes false
+      stats(turn);
+      sec = 30;
+    }, thinkingTime());
   }
   sec--;
   let sectxt = String(sec);
