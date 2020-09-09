@@ -1,4 +1,4 @@
-![Ajedrez](./splash.png)
+# chess
 
 A chess engine written in pure [TypeScript.](https://www.typescriptlang.org/)
 
