@@ -26,7 +26,7 @@ let turn: boolean = true;
 
 let sec: number = 30;
 
-const time: Array<number> = [1700]; // If you want random time add values to this array
+const time: Array<number> = [200]; // If you want random time add values to this array
 
 function thinkingTime(): number {
   return time[Math.floor(Math.random() * time.length)];
@@ -139,69 +139,82 @@ export function createBoard(rows: number, cols: number, board: Element | null) {
           startIcon = this;
         } else {
           //Second click
-          endPosition =
+
+          if (
             boardArray[UTILS.getTilePosition(this)[0]][
               UTILS.getTilePosition(this)[1]
-            ];
-          if (validation(startPosition, endPosition)) {
-            //If the movement is valid
+            ].team === "white"
+          ) {
+            startPosition =
+              boardArray[UTILS.getTilePosition(this)[0]][
+                UTILS.getTilePosition(this)[1]
+              ];
+            startIcon = this;
+          } else {
+            endPosition =
+              boardArray[UTILS.getTilePosition(this)[0]][
+                UTILS.getTilePosition(this)[1]
+              ];
+            if (validation(startPosition, endPosition)) {
+              //If the movement is valid
 
-            if (
-              (turn &&
-                startPosition.team == "white" &&
-                endPosition.team == "black") ||
-              (turn &&
-                startPosition.team == "white" &&
-                endPosition.team == "none")
-            ) {
-              // White turn
-              if (endPosition.team == "black") {
-                capture.play();
-              } else {
-                turn ? move1.play() : move2.play();
+              if (
+                (turn &&
+                  startPosition.team == "white" &&
+                  endPosition.team == "black") ||
+                (turn &&
+                  startPosition.team == "white" &&
+                  endPosition.team == "none")
+              ) {
+                // White turn
+                if (endPosition.team == "black") {
+                  capture.play();
+                } else {
+                  turn ? move1.play() : move2.play();
+                }
+
+                endPosition.piece = startPosition.piece;
+                endPosition.team = startPosition.team;
+
+                startPosition.piece = "none";
+                startPosition.team = "none";
+
+                //Visual movement
+                endIcon = this;
+                const move = startIcon.innerHTML;
+                endIcon.innerHTML = move;
+                startIcon.innerHTML = "";
+
+                //A turn has been played
+                turn = turn ? false : true; //turn becomes false
+                stats(turn);
+                sec = 30;
               }
+              intelligence();
+              setTimeout(() => {
+                const blackStart = blackMove()[0];
+                const blackEnd = blackMove()[1];
 
-              endPosition.piece = startPosition.piece;
-              endPosition.team = startPosition.team;
+                if (blackEnd.team == "white") {
+                  capture.play();
+                } else {
+                  move2.play();
+                }
 
-              startPosition.piece = "none";
-              startPosition.team = "none";
+                blackEnd.piece = blackStart.piece;
+                blackEnd.team = blackStart.team;
 
-              //Visual movement
-              endIcon = this;
-              const move = startIcon.innerHTML;
-              endIcon.innerHTML = move;
-              startIcon.innerHTML = "";
+                blackStart.piece = "none";
+                blackStart.team = "none";
 
-              //A turn has been played
-              turn = turn ? false : true; //turn becomes false
-              stats(turn);
-              sec = 30;
+                blackEnd.tile.innerHTML = blackStart.tile.innerHTML;
+                blackStart.tile.innerHTML = "";
+
+                turn = turn ? false : true; //turn becomes false
+                stats(turn);
+                sec = 30;
+              }, thinkingTime());
             }
-            intelligence();
-            setTimeout(() => {
-              const blackStart = blackMove()[0];
-              const blackEnd = blackMove()[1];
-
-              if (blackEnd.team == "white") {
-                capture.play();
-              } else {
-                move2.play();
-              }
-
-              blackEnd.piece = blackStart.piece;
-              blackEnd.team = blackStart.team;
-
-              blackStart.piece = "none";
-              blackStart.team = "none";
-
-              blackEnd.tile.innerHTML = blackStart.tile.innerHTML;
-              blackStart.tile.innerHTML = "";
-              
-              turn = turn ? false : true; //turn becomes false
-              stats(turn);
-              sec = 30;
-            }, thinkingTime());
           }
         }
       });
