@@ -1,26 +1,28 @@
-# chess
+# ♟️ Chess
+
+![Demo](preview.png)
 
 A chess engine written in pure [TypeScript.](https://www.typescriptlang.org/)
 
-## Installation
+## 💿 Installation
 
     $ git clone https://github.com/carlos-dubon/chess.git
     $ npm i
 
-## Production build
+## 📦 Production build
 
     $ npm run build
 
-## Development server
+## 💻 Development server
 
     $ npm run serve
 
 > You can view the development server at localhost:8081
 
-## Demo
+## 🎮Demo
 
-https://carlos-dubon.github.io/chess/
+[Play chess online](https://carlos-dubon.github.io/chess/)
 
-## License
+## 🔑 License
 
 [MIT](https://github.com/carlos-dubon/chess/blob/master/LICENSE)
