@@ -19,7 +19,7 @@ A chess engine written in pure [TypeScript.](https://www.typescriptlang.org/)
 
 > You can view the development server at localhost:8081
 
-## 🎮Demo
+## 🎮 Demo
 
 [Play chess online](https://carlos-dubon.github.io/chess/)
 
