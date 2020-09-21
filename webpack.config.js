@@ -42,6 +42,21 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              outputPath: "./images",
+              name: "./[name].[ext]",
+              publicPath: '../images',
+              useRelativePaths: true,
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
     ],
   },
   resolve: {

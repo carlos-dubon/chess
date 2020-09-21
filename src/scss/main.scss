@@ -14,12 +14,17 @@ a {
   color: inherit;
 }
 
+
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $appBackground;
+  background: url("../images/aurora.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .board {
@@ -84,17 +89,17 @@ body {
   flex-direction: row;
   height: $boardSize;
   .game-stats {
-    width: 431px;
+    width: 396px;
     font-family: "Lato", sans-serif;
     margin-right: 35px;
     .header {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      color: white;
-      width: 431px;
+      color: #767471;
+      width: 396px;
       height: 112px;
-      background: #37425e;
+      background: #fcfcfc;
       border-radius: 3px;
       padding: 23px;
       h1 {
@@ -112,12 +117,12 @@ body {
     }
 
     .stats {
-      color: white;
+      color: #767471;
       padding: 23px;
       margin-top: 30px;
-      background: #37425e;
+      background: #fcfcfc;
       border-radius: 3px;
-      width: 431px;
+      width: 396px;
       // height: 265px;
       h2 {
         font-weight: bold;
@@ -132,9 +137,9 @@ body {
       .players {
         display: flex;
         flex-direction: row;
-        width: 385px;
+        width: 350px;
         height: 50px;
-        background: #293248;
+        background: #F2F0ED;
         font-weight: bold;
         font-size: 16px;
         border-radius: 3px;
@@ -144,7 +149,7 @@ body {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #293248;
+          background: #F2F0ED;
           width: 50%;
           border-top-left-radius: 3px;
           border-bottom-left-radius: 3px;
@@ -153,7 +158,7 @@ body {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #252d42;
+          background: #e0dfdc;
           width: 50%;
           border-top-right-radius: 3px;
           border-bottom-right-radius: 3px;
@@ -174,7 +179,7 @@ body {
         flex-direction: row;
         width: 103px;
         height: 50px;
-        background: #293248;
+        background: #F2F0ED;
         font-weight: bold;
         font-size: 16px;
         border-radius: 3px;
@@ -184,7 +189,7 @@ body {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #293248;
+          background: #F2F0ED;
           width: 50%;
           border-top-left-radius: 3px;
           border-bottom-left-radius: 3px;
@@ -193,7 +198,7 @@ body {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #252d42;
+          background: #e0dfdc;
           width: 50%;
           border-top-right-radius: 3px;
           border-bottom-right-radius: 3px;
@@ -206,13 +211,13 @@ body {
         align-items: center;
         width: 118px;
         height: 50px;
-        background: #293248;
+        background: #F2F0ED;
         border-radius: 3px;
         font-weight: bold;
         font-size: 16px;
         transition: 0.3s;
         &:hover {
-          background: #252d42;
+          background: #e0dfdc;
         }
       }
     }

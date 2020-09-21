@@ -8,6 +8,7 @@
   height: 530px;
   overflow: hidden;
   border-radius: 3px;
+  $border: #f8bc2b;
   .row-1,
   .row-3 {
     color: white;
@@ -18,7 +19,7 @@
     align-items: center;
     height: 25px;
     width: 100%;
-    background-color: #aa530e;
+    background-color: $border;
     .col-empty {
       width: 25px;
     }
@@ -42,7 +43,7 @@
       flex-direction: column;
       width: 25px;
       height: 100%;
-      background-color: #aa530e;
+      background-color: $border;
       .y-label {
         color: white;
         font-family: "Roboto", sans-serif;
