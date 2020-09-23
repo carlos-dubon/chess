@@ -2,7 +2,7 @@
 
 ![Demo](preview.png)
 
-A chess engine written in pure [TypeScript.](https://www.typescriptlang.org/)
+A chess game written in pure [TypeScript.](https://www.typescriptlang.org/)
 
 ## 💿 Installation
 
